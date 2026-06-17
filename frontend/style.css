@@ -6,11 +6,8 @@
 	--text-main: #edf3ff;
 	--text-muted: #9aa9c4;
 	--brand: #2fd3b0;
-	--brand-dark: #1ab091;
-	--line: rgba(173, 193, 230, 0.14);
 	--shadow: 0 20px 45px rgba(5, 10, 20, 0.45);
 	--radius-lg: 18px;
-	--radius-md: 12px;
 }
 
 * {
@@ -20,6 +17,8 @@
 body {
 	margin: 0;
 	min-height: 100vh;
+	display: grid;
+	place-items: center;
 	font-family: "DM Sans", "Segoe UI", sans-serif;
 	color: var(--text-main);
 	background:
@@ -28,7 +27,7 @@ body {
 		linear-gradient(150deg, var(--bg-base), var(--bg-soft));
 	position: relative;
 	overflow-x: hidden;
-	padding: 20px;
+	padding: 24px;
 }
 
 .bg-glow {
@@ -56,134 +55,36 @@ body {
 	left: -80px;
 }
 
-.navbar,
-.layout {
+.welcome-shell {
 	position: relative;
 	z-index: 1;
+	width: min(680px, 100%);
 }
 
-.navbar {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	margin-bottom: 18px;
-	padding: 16px 20px;
+.welcome-card {
 	border-radius: var(--radius-lg);
 	border: 1px solid var(--panel-border);
 	background: var(--panel);
-	-webkit-backdrop-filter: blur(12px);
-	backdrop-filter: blur(12px);
+	-webkit-backdrop-filter: blur(14px);
+	backdrop-filter: blur(14px);
 	box-shadow: var(--shadow);
-	animation: rise 550ms ease-out;
-}
-
-.navbar-title-wrap {
-	display: flex;
-	flex-direction: column;
-	gap: 2px;
-}
-
-.navbar-title {
-	font-family: "Space Grotesk", "Segoe UI", sans-serif;
-	font-weight: 700;
-	font-size: 1.2rem;
-	letter-spacing: 0.02em;
-}
-
-.navbar-subtitle {
-	color: var(--text-muted);
-	font-size: 0.88rem;
-}
-
-.navbar-actions {
-	display: flex;
-	gap: 10px;
-}
-
-.icon-btn {
-	border: 1px solid var(--line);
-	background: rgba(255, 255, 255, 0.03);
-	color: var(--text-main);
-	width: 38px;
-	height: 38px;
-	border-radius: 10px;
-	cursor: pointer;
-	transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
-}
-
-.icon-btn:hover {
-	transform: translateY(-2px);
-	border-color: rgba(173, 193, 230, 0.35);
-	background: rgba(255, 255, 255, 0.08);
-}
-
-.layout {
-	display: grid;
-	grid-template-columns: 220px minmax(0, 1fr);
-	gap: 20px;
-}
-
-.sidebar,
-.card {
-	border-radius: var(--radius-lg);
-	border: 1px solid var(--panel-border);
-	background: var(--panel);
-	-webkit-backdrop-filter: blur(10px);
-	backdrop-filter: blur(10px);
-	box-shadow: var(--shadow);
-}
-
-.sidebar {
-	padding: 16px;
-	align-self: start;
+	padding: 34px 30px;
 	animation: rise 650ms ease-out;
-}
-
-.sidebar-item {
-	display: flex;
-	align-items: center;
-	gap: 10px;
-	padding: 12px 13px;
-	border-radius: 10px;
-	color: var(--text-muted);
-	font-weight: 500;
-	margin-bottom: 8px;
-	transition: background 180ms ease, color 180ms ease, transform 180ms ease;
-	cursor: pointer;
-}
-
-.sidebar-item span {
-	width: 18px;
 	text-align: center;
 }
 
-.sidebar-item.active,
-.sidebar-item:hover {
-	color: var(--text-main);
-	background: rgba(255, 255, 255, 0.08);
-	transform: translateX(3px);
-}
-
-.main {
-	animation: rise 750ms ease-out;
-}
-
-.card {
-	padding: 22px;
-}
-
-.hero-card {
+.welcome-card {
 	position: relative;
 	overflow: hidden;
 }
 
-.hero-card::after {
+.welcome-card::after {
 	content: "";
 	position: absolute;
-	width: 200px;
-	height: 200px;
-	top: -70px;
-	right: -70px;
+	width: 240px;
+	height: 240px;
+	top: -90px;
+	right: -90px;
 	background: radial-gradient(circle, rgba(47, 211, 176, 0.25), transparent 70%);
 	pointer-events: none;
 }
@@ -201,115 +102,18 @@ body {
 	font-weight: 700;
 }
 
-.card-title {
+h1 {
 	font-family: "Space Grotesk", "Segoe UI", sans-serif;
-	font-size: 1.36rem;
-	margin-bottom: 10px;
+	font-size: clamp(2rem, 4vw, 2.8rem);
+	line-height: 1.1;
+	margin: 8px 0 12px;
 }
 
 p {
 	margin: 0;
 	color: var(--text-muted);
-	line-height: 1.6;
-}
-
-.stats-grid {
-	margin-top: 18px;
-	display: grid;
-	grid-template-columns: repeat(3, minmax(0, 1fr));
-	gap: 12px;
-}
-
-.stat-item {
-	border: 1px solid var(--line);
-	border-radius: var(--radius-md);
-	background: rgba(255, 255, 255, 0.03);
-	padding: 12px;
-}
-
-.stat-label {
-	color: var(--text-muted);
-	font-size: 0.8rem;
-}
-
-.stat-value {
-	margin-top: 6px;
-	font-family: "Space Grotesk", "Segoe UI", sans-serif;
-	font-size: 1.25rem;
-	font-weight: 700;
-}
-
-.button-row {
-	margin-top: 18px;
-	display: flex;
-	gap: 10px;
-	flex-wrap: wrap;
-}
-
-.btn {
-	border: 0;
-	border-radius: 10px;
-	padding: 11px 16px;
-	font-weight: 700;
-	font-size: 0.93rem;
-	cursor: pointer;
-	transition: transform 170ms ease, filter 170ms ease;
-}
-
-.btn:hover {
-	transform: translateY(-2px);
-	filter: brightness(1.05);
-}
-
-.btn-primary {
-	color: #06211b;
-	background: linear-gradient(135deg, var(--brand), #5deccf);
-}
-
-.btn-secondary {
-	color: var(--text-main);
-	background: rgba(255, 255, 255, 0.08);
-	border: 1px solid var(--line);
-}
-
-.card-spaced {
-	margin-top: 18px;
-}
-
-label {
-	display: block;
-	margin-top: 12px;
-	margin-bottom: 7px;
-	font-size: 0.86rem;
-	color: var(--text-muted);
-}
-
-input,
-textarea {
-	width: 100%;
-	border: 1px solid var(--line);
-	background: rgba(255, 255, 255, 0.04);
-	color: var(--text-main);
-	border-radius: 10px;
-	padding: 11px 12px;
-	font-family: inherit;
-	font-size: 0.95rem;
-}
-
-textarea {
-	min-height: 110px;
-	resize: vertical;
-}
-
-input:focus,
-textarea:focus {
-	outline: none;
-	border-color: rgba(93, 236, 207, 0.7);
-	box-shadow: 0 0 0 3px rgba(93, 236, 207, 0.18);
-}
-
-.card .btn-primary {
-	margin-top: 14px;
+	line-height: 1.7;
+	font-size: 1rem;
 }
 
 @keyframes rise {
@@ -328,22 +132,7 @@ textarea:focus {
 		padding: 14px;
 	}
 
-	.layout {
-		grid-template-columns: 1fr;
-	}
-
-	.sidebar {
-		display: flex;
-		overflow-x: auto;
-		gap: 8px;
-	}
-
-	.sidebar-item {
-		margin-bottom: 0;
-		white-space: nowrap;
-	}
-
-	.stats-grid {
-		grid-template-columns: 1fr;
+	.welcome-card {
+		padding: 28px 20px;
 	}
 }
