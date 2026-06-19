@@ -24,7 +24,7 @@ serviceButtons.forEach((button) => {
 
 if (aboutUsButton) {
 	aboutUsButton.addEventListener('click', () => {
-		window.location.href = 'AboutUs.html';
+		window.location.href = 'About Us/AboutUs.html';
 	});
 }
 
@@ -33,7 +33,7 @@ if (bookButton) {
 		if (bookButton.textContent === 'Book Service') {
 			alert('Please select at least one service to book.');
 		} else {
-			window.location.href = 'bookingpage.html';
+			window.location.href = 'Booking/booking.html';
 		}
 	});
 }
