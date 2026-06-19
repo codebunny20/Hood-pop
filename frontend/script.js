@@ -24,10 +24,19 @@ serviceButtons.forEach((button) => {
 
 if (aboutUsButton) {
 	aboutUsButton.addEventListener('click', () => {
-		window.location.href = 'about us.html';
+		window.location.href = 'AboutUs.html';
 	});
 }
 
+if (bookButton) {
+	bookButton.addEventListener('click', () => {
+		if (bookButton.textContent === 'Book Service') {
+			alert('Please select at least one service to book.');
+		} else {
+			window.location.href = 'bookingpage.html';
+		}
+	});
+}
 
 
 updateSelectionUI();
